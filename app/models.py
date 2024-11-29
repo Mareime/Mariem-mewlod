@@ -13,10 +13,15 @@ class Question(models.Model):
     choix1=models.CharField(max_length=255)
     choix2=models.CharField(max_length=255)
     choix3=models.CharField(max_length=255)
-    reponce_user=models.CharField(max_length=255)
+    # reponce_user=models.CharField(max_length=255)
     vrai_reponce=models.CharField(max_length=255)
     id_compt=models.ForeignKey('Compt',on_delete=models.CASCADE)
 
 class Fiche(models.Model):
     nom=models.FileField(upload_to='pdf/')
     id_compt=models.ForeignKey('Compt',on_delete=models.CASCADE)
+class Reponse(models.Model):
+    id_user=models.ForeignKey('Compt',on_delete=models.CASCADE)
+    id_question=models.ForeignKey('Question',on_delete=models.CASCADE)
+    reponce_user=models.CharField(max_length=255)
+
